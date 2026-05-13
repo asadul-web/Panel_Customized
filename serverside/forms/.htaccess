@@ -1,0 +1,13 @@
+# Allow access to PHP files in this directory
+<Files "*.php">
+    Order allow,deny
+    Allow from all
+</Files>
+
+# Ensure PHP files are processed correctly
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Allow direct access to PHP files
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule \.php$ - [L]
+</IfModule>

@@ -1,0 +1,11 @@
+# Deny direct access to .inc files
+<Files ~ "\.inc$">
+    Order Allow,Deny
+    Deny from All
+</Files>
+
+# Deny direct access to .json files in backup directory
+<FilesMatch "\.(json)$">
+    Order Allow,Deny
+    Deny from All
+</FilesMatch>

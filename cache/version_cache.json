@@ -1,0 +1,1493 @@
+	<!DOCTYPE html>
+<html class="no-js" lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+<title>Vollam — Fast and Secure</title>
+<link rel="shortcut icon" href="uploads/images/1763767623.png" type="image/x-icon">
+<link rel="icon" href="uploads/images/1763767623.png" type="image/x-icon">
+
+<link rel="stylesheet" href="/dist/modules/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<link rel="stylesheet" href="/dist/sweetalert2/sweetalert2.min.css">
+<link rel="stylesheet" href="https://ruzain.com/dist/css-purple/style.css">
+<link rel="stylesheet" href="https://ruzain.com/dist/css-purple/components.css">
+<style>
+/* Import Hind Siliguri font for Bangla text support */
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+
+/* Global Bangla Font Support */
+.bangla-text, .hind-siliguri, .bangla-content {
+    font-family: 'Hind Siliguri', Arial, sans-serif !important;
+    font-feature-settings: "liga" 1, "kern" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+}
+
+/* Auto-detect Bangla text and apply font */
+*:lang(bn), *[lang="bn"], *[lang="bengali"] {
+    font-family: 'Hind Siliguri', Arial, sans-serif !important;
+    line-height: 1.7;
+}
+
+/* Form inputs with Bangla support */
+input.bangla-input, textarea.bangla-input, .form-control.bangla-input {
+    font-family: 'Hind Siliguri', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Table cells with Bangla text */
+.table td.bangla-text, .table th.bangla-text {
+    font-family: 'Hind Siliguri', Arial, sans-serif;
+    line-height: 1.7;
+}
+
+/* Card content with Bangla text */
+.card-body .bangla-text, .card-title.bangla-text {
+    font-family: 'Hind Siliguri', Arial, sans-serif;
+    line-height: 1.7;
+}
+
+/* Modal content with Bangla text */
+.modal-body .bangla-text, .modal-title.bangla-text {
+    font-family: 'Hind Siliguri', Arial, sans-serif;
+    line-height: 1.7;
+}
+
+/* Alert messages with Bangla text */
+.alert .bangla-text {
+    font-family: 'Hind Siliguri', Arial, sans-serif;
+    line-height: 1.7;
+}
+
+/* Button text with Bangla support */
+.btn.bangla-text {
+    font-family: 'Hind Siliguri', Arial, sans-serif;
+    font-weight: 500;
+}
+
+/* Navigation items with Bangla text */
+.nav-link.bangla-text, .sidebar-menu .bangla-text {
+    font-family: 'Hind Siliguri', Arial, sans-serif;
+}
+
+/* Summernote editor Bangla support */
+.note-editable {
+    font-family: 'Hind Siliguri', Arial, sans-serif;
+    line-height: 1.7;
+}
+
+.note-editable p, .note-editable div, .note-editable span {
+    font-family: 'Hind Siliguri', Arial, sans-serif;
+}
+
+/* DataTable Bangla text support */
+.dataTables_wrapper .bangla-text {
+    font-family: 'Hind Siliguri', Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* SweetAlert Bangla text support */
+.swal2-popup .bangla-text, .swal2-title.bangla-text, .swal2-content.bangla-text {
+    font-family: 'Hind Siliguri', Arial, sans-serif !important;
+    line-height: 1.7;
+}
+
+[data-theme="light"]  {
+  filter: invert(0%) hue-rotate(0deg);
+}
+
+[data-theme="dark"] {
+  filter: invert(100%) hue-rotate(180deg);
+}
+
+[data-theme="dark"] img{
+  filter: invert(100%) hue-rotate(180deg);
+}
+
+.fa-spin-hover:not(:hover) {
+   animation: none;
+}
+
+.progress2 {
+    display: -ms-flexbox;
+    display: flex;
+    height: 1rem;
+    overflow: hidden;
+    font-size: .75rem;
+    background-color: #e9ecef;
+    border-radius: .25rem;
+}
+
+.faz {
+   width: 35px;
+   height: 35px;
+   background-color: var(--primary);
+   border-radius: 50%;
+   box-shadow: 0 4px 10px 0 #666;
+   
+   font-size: 15px;
+   line-height: 35px;
+   color: white;
+   text-align: center;
+   
+   position: fixed;
+   right: 20px;
+   bottom: 20px;
+   z-index: 5000;
+   
+  transition: all 0.1s ease-in-out;
+}
+
+.faz:hover {
+   box-shadow: 0 4px 14px 0 #666;
+   transform: scale(1.05);
+}
+ 
+.faz2 {
+   width: 35px;
+   height: 35px;
+   background-color: var(--primary);
+   border-radius: 50%;
+   box-shadow: 0 4px 10px 0 #666;
+   
+   font-size: 15px;
+   line-height: 35px;
+   color: white;
+   text-align: center;
+   
+   position: fixed;
+   right: 20px;
+   bottom: 70px;
+   z-index: 5000;
+   
+  transition: all 0.1s ease-in-out;
+}
+
+.faz2:hover {
+   box-shadow: 0 4px 14px 0 #666;
+   transform: scale(1.05);
+}
+
+.app_image {
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%; 
+    border: 2px solid var(--primary);    
+}
+
+.animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    var(--primary) 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+
+@media(prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-delay: 0s !important;
+    animation-delay: -1ms !important;
+    scroll-behavior: auto !important;
+    animation-duration: 1ms !important;
+    transition-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+  }
+}
+
+.swal2-popup {
+    font-size: 14px !important;
+    box-shadow: none !important;
+    font-weight: 500 !important;
+}
+
+.swal2-popup2 {
+    font-size: 14px !important;
+    box-shadow: none !important;
+    font-weight: 500 !important;
+}
+
+.activitys-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 3px;
+    line-height: 50px;
+    font-size: 20px;
+    text-align: center;
+    margin-right: 20px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    text-align: center;
+    z-index: 1;
+}
+
+.section .section-title {
+    font-size: 15px;
+    color: #191d21;
+    font-weight: 600;
+    position: relative;
+    margin: 0 !important;
+}
+
+.bg-image {
+    background: #f8f9fa;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px 0;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Content Container */
+.bg-image .container {
+    position: relative;
+    z-index: 100;
+}
+
+/* Login Card */
+.bg-image .login-brand,
+.bg-image .card {
+    position: relative;
+    z-index: 100;
+}
+
+.table td, .table th {
+    vertical-align: baseline !important;
+}
+
+.btn-circle.btn-sm{
+    width:50px;height:50px;
+    padding:7px 10px;
+    border-radius:25px;
+    font-size:10px;
+    text-align:center;
+    position:fixed;
+    bottom:8px;right:8px
+}
+
+.username-class:hover {
+  cursor: pointer;
+}
+
+.hehe{
+    color:#ffff;
+    background-image:-webkit-linear-gradient(30deg,#f35626,#feab3a);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    -webkit-animation:10s linear infinite hue
+}
+
+.navbar .nav-link.nav-link-user img {
+    border: 1px solid #E5E4E2;
+    height: 30px;
+}
+
+.profile-widget-picture1 {
+    border: 1px solid #E5E4E2;
+    height: 50px;
+}
+
+.site-logo-image {
+    border: 1px solid #E5E4E2;
+    height: 65px;
+}
+
+.imgz-container1 {
+  width: 50; /*any size*/
+  height: 50; /*any size*/
+  display: inline-block;
+}
+
+.imgz-container2 {
+  width: 65; /*any size*/
+  height: 65; /*any size*/
+  display: inline-block;
+}
+
+.imgz-container {
+  width: 200px; /*any size*/
+  height: 200px; /*any size*/
+  display: inline-block;
+}
+
+.object-fit-cover {
+  border: 2px solid #E5E4E2;
+  border-radius: 50%;  
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /*magic*/
+}
+
+.user-item img {
+    padding-left: 0px !important; 
+    padding-right: 0px !important;
+}
+
+.notice-dropdown {
+    max-height: 300px;
+    overflow: scroll;
+}
+
+.avatar{
+    background: none !important;
+}
+
+.swal-content {
+    word-wrap: break-word !important;
+}
+
+.input-file { 
+    visibility: hidden; 
+}
+
+.input-file2 { 
+    visibility: hidden; 
+}
+
+@-webkit-keyframes hue{
+    from{
+        -webkit-filter:hue-rotate(0deg)
+    }
+    to{
+        -webkit-filter:hue-rotate(-360deg)
+        
+    }
+    
+}
+
+/* width */
+    ::-webkit-scrollbar {
+       width: 5px;
+    }
+/* Track */
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+   }
+
+/* Handle */
+   ::-webkit-scrollbar-thumb {
+      background: #bec4c4;
+   }
+
+/* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+       background: #555;
+   }
+   
+   #loading {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 100;
+  background-color: #fff;
+  z-index: 99999;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+@-webkit-keyframes building-blocks {
+  0%,
+  20% {
+    opacity: 0;
+    -webkit-transform: translateY(-300%);
+            transform: translateY(-300%); }
+  30%,
+  70% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0); }
+  90%,
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(300%);
+            transform: translateY(300%); } }
+@keyframes building-blocks {
+  0%,
+  20% {
+    opacity: 0;
+    -webkit-transform: translateY(-300%);
+            transform: translateY(-300%); }
+  30%,
+  70% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0); }
+  90%,
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(300%);
+            transform: translateY(300%); } }
+
+.building-blocks {
+  position: relative}
+  .building-blocks div {
+    height: 20px;
+    position: absolute;
+    width: 20px; }
+    .building-blocks div:after {
+      -webkit-animation: building-blocks 2.1s ease infinite backwards;
+              animation: building-blocks 2.1s ease infinite backwards;
+      background: #000000;
+      content: '';
+      display: block;
+      height: 20px;
+      width: 20px; }
+    .building-blocks div:nth-child(1) {
+      -webkit-transform: translate(-50%, -50%) translate(60%, 120%);
+              transform: translate(-50%, -50%) translate(60%, 120%); }
+    .building-blocks div:nth-child(2) {
+      -webkit-transform: translate(-50%, -50%) translate(-60%, 120%);
+              transform: translate(-50%, -50%) translate(-60%, 120%); }
+    .building-blocks div:nth-child(3) {
+      -webkit-transform: translate(-50%, -50%) translate(120%, 0);
+              transform: translate(-50%, -50%) translate(120%, 0); }
+    .building-blocks div:nth-child(4) {
+      -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%); }
+    .building-blocks div:nth-child(5) {
+      -webkit-transform: translate(-50%, -50%) translate(-120%, 0);
+              transform: translate(-50%, -50%) translate(-120%, 0); }
+    .building-blocks div:nth-child(6) {
+      -webkit-transform: translate(-50%, -50%) translate(60%, -120%);
+              transform: translate(-50%, -50%) translate(60%, -120%); }
+    .building-blocks div:nth-child(7) {
+      -webkit-transform: translate(-50%, -50%) translate(-60%, -120%);
+              transform: translate(-50%, -50%) translate(-60%, -120%); }
+  .building-blocks div:nth-child(1):after {
+      background-color:var(--primary);
+    -webkit-animation-delay: 0.15s;
+            animation-delay: 0.15s; }
+  .building-blocks div:nth-child(2):after {
+      background-color:var(--primary);
+    -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s; }
+  .building-blocks div:nth-child(3):after {
+      background-color:var(--primary);
+    -webkit-animation-delay: 0.45s;
+            animation-delay: 0.45s; }
+  .building-blocks div:nth-child(4):after {
+      background-color:var(--primary);
+    -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s; }
+  .building-blocks div:nth-child(5):after {
+      background-color:var(--primary);
+    -webkit-animation-delay: 0.75s;
+            animation-delay: 0.75s; }
+  .building-blocks div:nth-child(6):after {
+      background-color:var(--primary);
+    -webkit-animation-delay: 0.9s;
+            animation-delay: 0.9s; }
+  .building-blocks div:nth-child(7):after {
+      background-color:var(--primary);
+    -webkit-animation-delay: 1.05s;
+            animation-delay: 1.05s; }
+            
+.profilepic {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #111;
+}
+
+.profilepic:hover .profilepic__content {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.profilepic:hover .profilepic__image {
+  opacity: .5;
+}
+
+.profilepic__image {
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity .2s ease-in-out;
+  float: none;
+}
+
+.profilepic__content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+}
+
+.profilepic__icon {
+  color: white;
+  padding-bottom: 8px;
+}
+
+.profilepic__icon .fas {
+  font-size: 20px;
+}
+
+.profilepic__text {
+  text-transform: uppercase;
+  font-size: 12px;
+  width: 50%;
+  text-align: center;
+}
+
+/* Custom Logout Popup Styling */
+.swal2-popup-custom {
+    border-radius: 20px !important;
+    padding: 2rem !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
+}
+
+.swal2-popup-custom .swal2-image {
+    margin: 1rem auto 1.5rem auto !important;
+    border-radius: 15px !important;
+}
+
+.swal2-popup-custom .swal2-content {
+    font-size: 1.1rem !important;
+    color: #666 !important;
+    margin: 1rem 0 2rem 0 !important;
+    font-weight: 500 !important;
+}
+
+.swal2-confirm-custom {
+    background: #6f42c1 !important;
+    border: none !important;
+    border-radius: 25px !important;
+    padding: 12px 30px !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    margin: 0 8px !important;
+    min-width: 100px !important;
+    transition: all 0.3s ease !important;
+}
+
+.swal2-confirm-custom:hover {
+    background: #5a359a !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(111, 66, 193, 0.4) !important;
+}
+
+.swal2-cancel-custom {
+    background: #dc3545 !important;
+    border: none !important;
+    border-radius: 25px !important;
+    padding: 12px 30px !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    margin: 0 8px !important;
+    min-width: 100px !important;
+    transition: all 0.3s ease !important;
+}
+
+.swal2-cancel-custom:hover {
+    background: #c82333 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4) !important;
+}
+
+.swal2-popup-custom .swal2-actions {
+    margin: 2rem 0 0 0 !important;
+    justify-content: center !important;
+    gap: 15px !important;
+}
+
+/* Remove default SweetAlert2 styling conflicts */
+.swal2-popup-custom .swal2-styled {
+    border: none !important;
+    outline: none !important;
+}
+
+.swal2-popup-custom .swal2-styled:focus {
+    box-shadow: none !important;
+}
+
+</style>
+
+<style>
+/* Reseller Card Theme Integration */
+.reseller-card.alert-primary {
+    background: var(--primary, #6777ef) !important;
+    background: linear-gradient(135deg, var(--primary, #6777ef), rgba(103, 119, 239, 0.8)) !important;
+    border-color: var(--primary, #6777ef) !important;
+    color: white !important;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(103, 119, 239, 0.3);
+    transition: all 0.3s ease;
+}
+
+.reseller-card.alert-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(103, 119, 239, 0.4);
+}
+
+.reseller-card .alert-heading {
+    color: white !important;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.reseller-card p {
+    color: rgba(255, 255, 255, 0.9) !important;
+    margin-bottom: 15px;
+}
+
+.reseller-card .btn-light {
+    background: #28a745 !important;
+    background: linear-gradient(135deg, #28a745, #20c997) !important;
+    color: white !important;
+    border: none !important;
+    font-weight: 600 !important;
+    padding: 8px 20px !important;
+    border-radius: 6px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+}
+
+.reseller-card .btn-light:hover {
+    background: #218838 !important;
+    background: linear-gradient(135deg, #218838, #17a2b8) !important;
+    color: white !important;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+}
+</style>
+
+</head>
+<body class="bg-image">
+<a class="faz" href="#" onclick="return false;" type="button" data-theme-toggle><i id="xtoggle"></i></a>
+<div id="app">
+<section class="section">
+<div class="container mt-5">
+<div class="row">
+<div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+<div class="login-brand">
+<img src="uploads/images/1763767623.png" alt="logo" width="120" height="120">
+</div>
+
+
+<div class="card card-primary">
+<div class="card-body">
+
+    
+    <div class="mb-3 text-center">
+        
+    <div class="alert alert-primary alert-dismissible show fade">
+        <div class="alert-body text-center">
+            <button class="close" data-dismiss="alert"><span>&times;</span></button>
+            <div class="text-white"><p class="bangla-text" style="font-family: &quot;Hind Siliguri&quot;, Arial, sans-serif; line-height: 1.7;">Improved performance and faster response</p><p class="bangla-text" style="font-family: &quot;Hind Siliguri&quot;, Arial, sans-serif; line-height: 1.7;"><b class="bangla-text" style="font-family: &quot;Hind Siliguri&quot;, Arial, sans-serif; line-height: 1.7;"><span style="caret-color: rgb(108, 117, 125); color: rgb(255, 255, 255);">WhatsApp +966598126771</span><br></b></p></div>
+        </div>
+    </div>
+    </div>
+
+    <form method="post" class="authenticate" autocomplete="off">
+        <div class="errors"></div>
+    
+        <input type="hidden" id="submitted" name="submitted" value="login_account" />
+        <input type="hidden" id="code" name="code" value="SERZT05XTG5ZV01nMjJ4MUZVOFFpSzlYczVxWmRyRXpuVUplNFgrL2hjMlI5b1B5UGZPWGlmOVYzaDhvLzZKUg==" />
+        <input type="hidden" id="category" name="category" value="VnRkc2NoQ0dxck1lbFhGOXNHeVlmUT09" />
+        <input type="hidden" name="_key" id="_key" value="eXR5K1loN0lGTWdHb09xTmdVMlc0QT09">
+        <div class="form-group">
+            <label for="user_name">Username</label>
+            <input type="text" class="form-control" name="user_name" id="user_name" value="" tabindex="1" autofocus>
+        </div>
+        <div class="form-group">
+            <label for="user_pass">Password</label>
+            
+            <div class="input-group colorpickerinput">
+            <input type="password" class="form-control" name="user_pass" id="user_pass" tabindex="1" autofocus>
+                <div class="input-group-append">
+                    <div class="input-group-text text-primary" style="cursor: pointer;">
+                        <span class="password-toggle-icon"><i class="fas fa-eye"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg btn-block btn-submit" tabindex="4">Login</button>
+        </div>
+        <hr>
+        <div class="form-group text-center">
+            <a href="download" class="btn btn-icon icon-left"><i class="fas fa-download"></i> Application List</a>
+        </div>
+        <div class="form-group text-center">
+            <a href="update" class="btn btn-icon icon-left btn-primary"><i class="fas fa-edit"></i> Update Information</a>
+        </div>
+        <hr>
+        <div class="form-group text-center">
+            <div class="alert alert-primary reseller-card" role="alert">
+                <h6 class="alert-heading"><i class="fas fa-handshake"></i> Become a Reseller</h6>
+                <p class="mb-2">Join our reseller program and start earning by selling VPN accounts to your customers.</p>
+                <a href="reseller-signup" class="btn btn-light btn-sm">
+                    <i class="fas fa-user-plus"></i> Apply Now
+                </a>
+            </div>
+        </div>
+    </form>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="footer">
+<div class="simple-footer">
+<span class="animate-charcter">Vollam</span><br>
+<span class="text-muted">Copyright &copy; <script>document.write(new Date().getFullYear())</script> - <a href="/privacy-policy" target="_blank">Privacy Policy</a></span>
+</div>
+</footer>
+</div>
+
+
+<div class="modal fade normal-modalize" role="dialog" aria-labelledby="smallmodal">
+<div class="modal-dialog modal-md normal-modal-dialog" role="document">
+<div class="modal-content normal-modal-content">
+<div class="modal-header normal-modal-header">
+<h5 class="modal-title normal-modal-title"></h5>
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body normal-modal-body">
+<div class="modal-error normal-modal-error"></div>
+<div class="modal-html normal-modal-html"></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal fade search-modalize" role="dialog" aria-labelledby="smallmodal">
+<div class="modal-dialog modal-md search-modal-dialog" role="document">
+<div class="modal-content search-modal-content">
+<div class="modal-header search-modal-header">
+<h5 class="modal-title search-modal-title"></h5>
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body search-modal-body">
+<div class="modal-error search-modal-error"></div>
+<div class="modal-html search-modal-html"></div>
+</div>
+</div>
+</div>
+</div>
+
+<script src="/dist/modules/jquery.min.js"></script>
+<script src="/dist/modules/popper.js"></script>
+<script src="/dist/modules/tooltip.js"></script>
+<script src="/dist/modules/bootstrap/js/bootstrap.min.js"></script>
+<script src="/dist/sweetalert2/sweetalert2.min.js"></script>
+<script src="/dist/js/stisla.js"></script>
+<script src="/dist/bootstrap/assets/jqueryform/jquery.form.js"></script>
+<script src="/dist/js/scripts.js"></script>
+<script>
+function normal_modalize(title, body)
+	{
+	    $(".normal-modalize").modal({
+            backdrop: 'static',
+            keyboard: false  // to prevent closing with Esc button (if you want this too)
+        })
+        $(".normal-modalize").modal('show');
+		$(".normal-modal-title").text(title);
+		$(".normal-modal-error").html('');
+		$(".normal-modal-html").html(body);
+	}
+
+$(document).ready(function() {
+	// Check if ClipboardJS is available
+	if (typeof ClipboardJS !== 'undefined') {
+		var clippy = new ClipboardJS('.btn-copy');
+		clippy.on('success', function(e) {
+	    $('.normal-modalize').modal('hide');
+		Swal.fire({
+            title: "Details copied successfuly!",
+            icon: "success",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            confirmButtonText: "Confirm",
+            didOpen: function () {
+                Swal.getConfirmButton().blur()
+            },
+            customClass: {
+                confirmButton: 'swal2-confirm btn btn-primary swal2-styled'
+            }
+        }); e.clearSelection();
+		}); 
+	}
+	var token = $("#app").data("token");
+	
+	if (typeof ClipboardJS !== 'undefined') {
+		var kiffy = new ClipboardJS('.btn-xcopy');
+	$.fn.modal.Constructor.prototype._enforceFocus = function() {};
+	kiffy.on('success', function(e) {
+	    $('.normal-modalize').modal('hide');
+		Swal.fire({
+            title: "Link copied successfuly!",
+            icon: "success",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            confirmButtonText: "Confirm",
+            didOpen: function () {
+                Swal.getConfirmButton().blur()
+            },
+            customClass: {
+                confirmButton: 'swal2-confirm btn btn-primary swal2-styled'
+            }
+        }); e.clearSelection();
+		}); 
+	}
+	var token = $("#xxapp").data("token");
+	
+	$(".btn-logout").click(function(e) {
+		e.preventDefault(); // Prevent default link behavior
+		
+		Swal.fire({
+          text: "Are you sure you want to logout?",
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          imageUrl: "uploads/images/1763767623.png",
+          imageWidth: 150,
+          imageHeight: 150,
+          imageAlt: "Custom image",
+          showCancelButton: true,
+          confirmButtonText: `Confirm`,
+          didOpen: function () {
+            Swal.getConfirmButton().blur()
+          },
+          customClass: {
+                confirmButton: 'swal2-confirm btn btn-primary swal2-styled',
+                cancelButton: 'swal2-confirm btn btn-danger swal2-styled'
+            }
+        }).then((doLogout) => {
+			if (doLogout.isConfirmed) {
+				window.location.href = "https://ruzain.com/logout";
+			}
+		});
+		
+		return false;
+	})
+	
+    $('.btn-genuine').click(function () {
+        normal_modalize('Made with \u2764️ by Vollam','Thank you for choosing my vpn panel and for supporting me.')
+    })
+})
+
+        $(document).on('click', '.upload-field', function(){
+            var file = $(this).parent().parent().find('.input-file');
+            file.trigger('click');
+        });
+
+        $(document).on('change', '.input-file', function(){
+            $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+        });
+        
+        $(document).on('click', '.upload-field2', function(){
+            var file2 = $(this).parent().parent().parent().find('.input-file2');
+            file2.trigger('click');
+        });
+
+        $(document).on('change', '.input-file2', function(){
+            $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+        });
+        
+$(window).on('load', function() {
+   $("#loading").hide();
+   
+   // Initialize Bangla font detection and application
+   initializeBanglaFontSupport();
+});
+
+// Bangla Font Auto-Detection and Application
+function initializeBanglaFontSupport() {
+    // Function to detect Bangla text
+    function containsBanglaText(text) {
+        // Bengali Unicode range: U+0980–U+09FF
+        var banglaRegex = /[\u0980-\u09FF]/;
+        return banglaRegex.test(text);
+    }
+    
+    // Function to apply Bangla font to elements
+    function applyBanglaFont(element) {
+        $(element).addClass('bangla-text');
+        $(element).css({
+            'font-family': "'Hind Siliguri', Arial, sans-serif",
+            'line-height': '1.7'
+        });
+    }
+    
+    // Auto-detect and apply Bangla font to text content
+    function autoDetectBanglaText() {
+        // Check common text elements
+        var textElements = $('p, span, div, td, th, h1, h2, h3, h4, h5, h6, label, .card-title, .card-text, .modal-title, .modal-body, .alert');
+        
+        textElements.each(function() {
+            var text = $(this).text();
+            if (containsBanglaText(text)) {
+                applyBanglaFont(this);
+            }
+        });
+        
+        // Check input fields and textareas
+        $('input[type="text"], textarea, .form-control').each(function() {
+            var text = $(this).val();
+            if (containsBanglaText(text)) {
+                applyBanglaFont(this);
+            }
+        });
+    }
+    
+    // Run auto-detection on page load
+    autoDetectBanglaText();
+    
+    // Monitor for dynamic content changes
+    var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'childList') {
+                mutation.addedNodes.forEach(function(node) {
+                    if (node.nodeType === 1) { // Element node
+                        var $node = $(node);
+                        if (containsBanglaText($node.text())) {
+                            applyBanglaFont(node);
+                        }
+                        // Check child elements
+                        $node.find('*').each(function() {
+                            if (containsBanglaText($(this).text())) {
+                                applyBanglaFont(this);
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    });
+    
+    // Start observing
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+    
+    // Monitor input changes
+    $(document).on('input keyup paste', 'input, textarea', function() {
+        var text = $(this).val();
+        if (containsBanglaText(text)) {
+            applyBanglaFont(this);
+        }
+    });
+}
+
+// Global function to manually apply Bangla font
+window.applyBanglaFontToElement = function(selector) {
+    $(selector).addClass('bangla-text').css({
+        'font-family': "'Hind Siliguri', Arial, sans-serif",
+        'line-height': '1.7'
+    });
+};
+
+// Global function to toggle Bangla font for an element
+window.toggleBanglaFont = function(selector) {
+    var $element = $(selector);
+    if ($element.hasClass('bangla-text')) {
+        $element.removeClass('bangla-text').css({
+            'font-family': '',
+            'line-height': ''
+        });
+    } else {
+        $element.addClass('bangla-text').css({
+            'font-family': "'Hind Siliguri', Arial, sans-serif",
+            'line-height': '1.7'
+        });
+    }
+};
+
+/**
+* Utility function to calculate the current theme setting.
+* Look for a local storage value.
+* Fall back to system setting.
+* Fall back to light mode.
+*/
+function calculateSettingAsThemeString({ localStorageTheme, systemSettingDark }) {
+  if (localStorageTheme !== null) {
+    return localStorageTheme;
+  }
+
+  if (systemSettingDark.matches) {
+    return "dark";
+  }
+
+  return "light";
+}
+
+/**
+* Utility function to update the button text and aria-label.
+*/
+function updateButton({ buttonEl, isDark }) {
+  const newCta = isDark ? "fa fa-sun" : "fa fa-moon";
+  // use an aria-label if you are omitting text on the button
+  // and using a sun/moon icon, for example
+  $('#xtoggle').attr("class",newCta);
+}
+
+/**
+* Utility function to update the theme setting on the html tag
+*/
+function updateThemeOnHtmlEl({ theme }) {
+  document.querySelector("html").setAttribute("data-theme", theme);
+}
+
+
+/**
+* On page load:
+*/
+
+/**
+* 1. Grab what we need from the DOM and system settings on page load
+*/
+const button = document.querySelector("[data-theme-toggle]");
+const localStorageTheme = localStorage.getItem("theme");
+const systemSettingDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+/**
+* 2. Work out the current site settings
+*/
+let currentThemeSetting = calculateSettingAsThemeString({ localStorageTheme, systemSettingDark });
+
+/**
+* 3. Update the theme setting and button text accoridng to current settings
+*/
+updateButton({ buttonEl: button, isDark: currentThemeSetting === "dark" });
+updateThemeOnHtmlEl({ theme: currentThemeSetting });
+
+/**
+* 4. Add an event listener to toggle the theme
+*/
+button.addEventListener("click", (event) => {
+  const newTheme = currentThemeSetting === "dark" ? "light" : "dark";
+
+  localStorage.setItem("theme", newTheme);
+  updateButton({ buttonEl: button, isDark: newTheme === "dark" });
+  updateThemeOnHtmlEl({ theme: newTheme });
+
+  currentThemeSetting = newTheme;
+}); 
+
+// Global variable to track dismissed notices for current page load
+window.dismissedNotices = window.dismissedNotices || [];
+
+// Global flag to track if notice has been rendered
+window.noticeRendered = window.noticeRendered || false;
+
+// Unicode-safe base64 encoding function
+function unicodeSafeHash(str) {
+  try {
+    // Use a simple hash instead of btoa to avoid Unicode issues
+    var hash = 0;
+    for (var i = 0; i < str.length; i++) {
+      var char = str.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash; // Convert to 32bit integer
+    }
+    return Math.abs(hash).toString(36);
+  } catch(e) {
+    return 'notice_' + Date.now();
+  }
+}
+
+function renderNoticeBanner(n){
+  try{
+    if(!n || !n.message || !n.active){ return; }
+    
+    // Prevent multiple renders - only render once per page load
+    if(window.noticeRendered){ return; }
+    
+    // NEVER show on login page
+    var currentPage = window.location.pathname;
+    var isLogin = currentPage.includes('login') || currentPage.includes('p=login');
+    if(isLogin){ return; } // Exit immediately if on login page
+    
+    // Only show on dashboard page
+    var isDashboard = currentPage === '/' || currentPage === '/dashboard' || currentPage.includes('dashboard');
+    if(!isDashboard){ return; }
+    
+    // Check if user has dismissed this notice in current page load (Unicode-safe)
+    var noticeId = 'notice_' + unicodeSafeHash((n.title||'') + '|' + (n.message||''));
+    if(window.dismissedNotices.includes(noticeId)){ return; }
+    
+    var sev = String(n.severity||'info').toLowerCase();
+    // Force green color (alert-success) regardless of severity
+    var cls = 'alert-success';
+    var b = n.billing || {};
+    var extra = b.status ? (' • Status: ' + b.status) : '';
+    var due = b.next_due ? (' • Due: ' + b.next_due) : '';
+    var html = '<div class="alert '+cls+' alert-dismissible" role="alert" style="margin-bottom:12px; position:relative;" data-notice-id="'+noticeId+'">'
+      + '<button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="dismissNotice(\''+noticeId+'\')" style="position:absolute; top:10px; right:15px; font-size:24px; font-weight:700; line-height:1; color:#155724; opacity:0.8; background:none; border:none; cursor:pointer;">'
+      + '<span aria-hidden="true">&times;</span></button>'
+      + '<strong><i class="fas fa-bullhorn"></i> ' + (n.title||'Panel News Update') + '</strong> — ' + n.message + extra + due
+      + '</div>';
+    var $target = $('.section-body').first();
+    if($target.length===0){ $target = $('.main-content').first(); }
+    if($target.length===0){ $target = $('body'); }
+    
+    // Check if this exact notice already exists on the page
+    var existingNotice = $('[data-notice-id="'+noticeId+'"]');
+    if(existingNotice.length > 0){
+      return; // Notice already displayed, don't add duplicate
+    }
+    
+    // Add the notice
+    $target.prepend(html);
+    
+    // Mark as rendered to prevent duplicates
+    window.noticeRendered = true;
+  }catch(e){ console.warn('renderNoticeBanner error', e); }
+}
+
+// Function to temporarily hide notice (until page refresh)
+function dismissNotice(noticeId){
+  // Add to dismissed notices array for current page load
+  if(!window.dismissedNotices.includes(noticeId)){
+    window.dismissedNotices.push(noticeId);
+  }
+  $('[data-notice-id="'+noticeId+'"]').fadeOut(300, function(){
+    $(this).remove();
+  });
+  // Reset render flag in case user wants to see notices again
+  window.noticeRendered = false;
+}
+
+async function fetchPopupNotice(){
+  try {
+    // Only show for ADMIN users (administrator, superadmin) - NOT reseller or developer
+    var userLevel = '0';
+    var userId = '';
+    var isAdmin = (userId === '1' || userLevel === 'superadmin' || userLevel === 'administrator');
+    
+    if(!isAdmin){
+      return; // Exit if not admin (reseller/developer will not see notices)
+    }
+    
+    // Use local proxy only (actual API URL is encrypted and hidden)
+    var urls = [
+      'https://ruzain.com/serverside/data/popup_notice_proxy.php'
+    ];
+    
+    var j = null;
+    for (var i = 0; i < urls.length; i++) {
+      try {
+        var r = await fetch(urls[i], { 
+          method: 'GET',
+          mode: i === 0 ? 'same-origin' : 'cors',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          cache: 'no-cache'
+        });
+        
+        if (r.ok) {
+          j = await r.json();
+          break;
+        }
+      } catch (err) {
+        // Silent fallback to next URL
+        continue;
+      }
+    }
+    
+    if (!j) {
+      return;
+    }
+    
+    if(j && j.response === 1 && j.data){ 
+      var data = j.data;
+      
+      if(!data || !data.message || !data.active){ 
+        return; 
+      }
+      
+      // Only show on dashboard page
+      var currentPage = window.location.pathname;
+      var isDashboard = currentPage === '/' || currentPage === '/dashboard' || currentPage.includes('dashboard');
+      
+      // Check if should show on dashboard
+      if(!data.show_on_dashboard) {
+        return;
+      }
+      
+      // Only show if on dashboard page
+      if(!isDashboard){ 
+        return; 
+      }
+      
+      // Wait for SweetAlert to be ready
+      setTimeout(function(){
+        if(typeof Swal !== 'undefined'){
+          var htmlContent = document.createElement("div");
+          htmlContent.innerHTML = '<div class="swal-title" style="padding-bottom:10px; font-weight:bold; font-size:18px;">' + (data.title||'Important Notice') + '</div>'
+            + '<div style="padding-top:10px;">' + data.message + '</div>';
+          
+          Swal.fire({
+            icon: data.icon || 'info',
+            html: htmlContent,
+            confirmButtonText: 'Confirm',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showCloseButton: false,
+            didOpen: function () {
+              Swal.getConfirmButton().blur();
+            },
+            customClass: {
+              confirmButton: 'swal2-confirm btn btn-primary swal2-styled'
+            }
+          });
+        }
+      }, 500);
+    }
+  } catch(e){ 
+    // Silently fail
+  }
+}
+
+async function fetchNoticeBanner(){
+  try {
+    // Only show for ADMIN users (administrator, superadmin) - NOT reseller or developer
+    var userLevel = '0';
+    var userId = '';
+    var isAdmin = (userId === '1' || userLevel === 'superadmin' || userLevel === 'administrator');
+    
+    if(!isAdmin){
+      return; // Exit if not admin (reseller/developer will not see banner notices)
+    }
+    
+    var url = "https://ruzain.com/serverside/data/notice_proxy.php";
+    if(!url){ return; }
+    var r = await fetch(url, { credentials: 'same-origin' });
+    var j = await r.json();
+    if(j && j.response === 1 && j.data){ 
+      renderNoticeBanner(j.data); // Show banner
+    }
+  } catch(e){ console.warn('Notice fetch failed', e); }
+}
+
+// Check license status and show popup if blocked or expired (ADMIN ONLY)
+function checkLicenseStatusPopup() {
+  }
+
+document.addEventListener('DOMContentLoaded', function(){
+  // Only run on dashboard page for admin users
+  var currentPage = window.location.pathname;
+  var isDashboard = currentPage === '/' || currentPage === '/dashboard' || currentPage.includes('dashboard');
+  var isLogin = currentPage.includes('login') || currentPage === '/login';
+  
+  // Don't run on login page
+  if (!isLogin && isDashboard) {
+    fetchPopupNotice();  // Fetch popup notice (admin dashboard only)
+    // fetchNoticeBanner(); // Fetch banner notice (admin dashboard only) - DISABLED
+  }
+  
+  if (!isLogin) {
+    checkLicenseStatusPopup(); // Check license status (all pages except login)
+  }
+});
+
+// Turnstile callback function
+window.onloadTurnstileCallback = function() {
+  // Turnstile loaded successfully
+};
+</script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
+<script>
+function normalMessage(type, title, message) {
+    $(".errors").html('<div class="alert alert-' + type + ' alert-has-icon"><div class="alert-icon"><i class="far fa-lightbulb"></i></div><div class="alert-body"><button class="close" data-dismiss="alert"><span>&times;</span></button><div class="alert-title">' + title + '</div>' + message + '</div></div>').slideDown();
+}
+
+$('document').ready(function()
+{
+    var $form = $('.authenticate');
+	$form.ajaxForm({
+		type: "POST",
+		url: "https://ruzain.com/serverside/forms/login.php",
+		data: $form.serialize(),
+		dataType: "JSON",
+		cache: false,
+		beforeSend: function() {
+			$(".btn-submit").addClass("btn-progress");
+		},
+		success: function(data){
+			if(data.response == 1){
+			    $('.btn-submit').addClass("disabled");
+    			Swal.fire({
+                        title: "Success",
+                        icon: "success",
+                        html: data.msg,
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        customClass: {
+                            confirmButton: 'btn-primary'
+                        },
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading();
+                            const timer = Swal.getPopup().querySelector("b");
+                            timerInterval = setInterval(() => {
+                                if(timer) timer.textContent = `${
+                                    Swal.getTimerLeft()
+                                }`;
+                            }, 100);
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval);
+                        }
+                    }).then((result) => {
+                        if (result.dismiss === Swal.DismissReason.timer) {
+                            location.reload()
+                        }
+                    });
+    		}
+    		if(data.response == 2){
+                    			Swal.fire({
+                                  title: "Failed",
+                                  html: data.msg,
+                                  icon: "error",
+                                  allowOutsideClick: false,
+                                  allowEscapeKey: false,
+                                  didOpen: function () {
+                                    Swal.getConfirmButton().blur()
+                                  }
+                                });
+                    		}
+                    		if(data.response == 3){
+                    			Swal.fire({
+                                  title: "Failed",
+                                  html: data.errormsg,
+                                  icon: "error",
+                                  allowOutsideClick: false,
+                                  allowEscapeKey: false
+                                });
+                    		}
+    		if(data.response == 4){
+    		    $('.btn-submit').prop("disabled", true);
+    			Swal.fire({
+                        title: "Success",
+                        icon: "success",
+                        html: data.msg,
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        customClass: {
+                            confirmButton: 'btn-primary'
+                        },
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading();
+                            const timer = Swal.getPopup().querySelector("b");
+                            timerInterval = setInterval(() => {
+                                if(timer) timer.textContent = `${
+                                    Swal.getTimerLeft()
+                                }`;
+                            }, 100);
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval);
+                        }
+                    }).then((result) => {
+                        if (result.dismiss === Swal.DismissReason.timer) {
+                            location.href = "confirmation?id=" + data.id
+                        }
+                    });
+    		}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			Swal.fire({
+                        title: "Error",
+                        icon: "error",
+                        html: "Failed getting data from ajax.<br><b></b>",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        customClass: {
+                            confirmButton: 'btn-primary'
+                        },
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading();
+                            const timer = Swal.getPopup().querySelector("b");
+                            timerInterval = setInterval(() => {
+                                if(timer) timer.textContent = `${
+                                    Swal.getTimerLeft()
+                                }`;
+                            }, 100);
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval);
+                        }
+                    }).then((result) => {
+                        if (result.dismiss === Swal.DismissReason.timer) {
+                            location.reload()
+                        }
+                    });
+		},
+		complete: function(){
+			$(".btn-submit").removeClass("btn-progress");
+		}
+	});
+	
+	const passwordField = document.getElementById("user_pass");
+    const togglePassword = document.querySelector(".password-toggle-icon i");
+
+    togglePassword.addEventListener("click", function () {
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        togglePassword.classList.remove("fa-eye");
+        togglePassword.classList.add("fa-eye-slash");
+      } else {
+        passwordField.type = "password";
+        togglePassword.classList.remove("fa-eye-slash");
+        togglePassword.classList.add("fa-eye");
+      }
+    });
+});
+</script>
+
+
+<!-- Security Protection Script -->
+<script src="/includes/security_protection.js?v=1774771358"></script>
+</body>
+</html>

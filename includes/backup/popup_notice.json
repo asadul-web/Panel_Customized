@@ -1,0 +1,10 @@
+{
+    "title": "📢 System Update Notice",
+    "message": "<div class=\"swal-title\" style=\"text-align: center; padding-bottom: 0px; scrollbar-width: auto; scrollbar-color: rgb(155, 155, 155) rgb(255, 255, 255);\"><div class=\"swal-title\" style=\"padding-bottom: 0px; scrollbar-width: auto; scrollbar-color: rgb(155, 155, 155) rgb(255, 255, 255);\"><p class=\"isSelectedEnd\">✨ <strong><font color=\"#ffffff\" style=\"background-color: rgb(49, 24, 115);\">Full Script Update</font></strong><br>All system scripts have been updated for better performance and stability.</p><p class=\"isSelectedEnd\">🐧 <strong><font color=\"#ffffff\" style=\"background-color: rgb(231, 156, 156);\">Debian 13 Support</font></strong><br>Now fully compatible with Debian 13 for a smoother and more modern experience.</p><p class=\"isSelectedEnd\">🌐 <strong><font color=\"#ffffff\" style=\"background-color: rgb(0, 255, 0);\">Advanced Cloudflare Integration</font></strong><br>Easily add multiple domains and manage multiple DNS configurations with Cloudflare.</p><p class=\"isSelectedEnd\">🔒 <strong><font color=\"#ffffff\" style=\"background-color: rgb(16, 74, 90);\">Enhanced Web Panel Security</font></strong><br>Additional protection layers have been implemented to keep your panel safe and secure.</p><p class=\"isSelectedEnd\">These improvements are designed to give you more flexibility, stronger security, and a better overall experience.</p><p>🙏 Thank you for staying with us!<br><b><font color=\"#311873\">Join With Us On</font></b>&nbsp; <span style=\"background-color: rgb(0, 255, 0);\">&nbsp;&nbsp;<font color=\"#ffffff\"><a href=\"https://chat.whatsapp.com/KqWBFqD6pifCtqK7N47sTh\" target=\"_blank\"><b>WhatsApp Group</b></a>&nbsp;</font> &nbsp;</span></p></div></div>",
+    "active": true,
+    "icon": "success",
+    "show_on_login": false,
+    "show_on_dashboard": true,
+    "updated_at": 1774713409,
+    "updated_by": "developer"
+}

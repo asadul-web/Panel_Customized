@@ -1,0 +1,216 @@
+<?php
+error_reporting(E_ERROR | E_PARSE);
+ini_set('display_errors', '0');
+require_once '../../../includes/functions.php';
+chkSession();
+$values = array();
+ini_set('post_max_size','1024M');
+ini_set('upload_max_filesize','1024M');
+if($user_id_2 == 1 || $user_level_2 == 'superadmin'){
+}else{
+	echo "<script> swal({ title: 'Error!' , text: 'Sorry, you dont have permission to access this page.', button: false, closeOnClickOutside: false, icon: 'error' })  </script>";
+	$db->RedirectToURL($db->base_url());
+	exit;
+}
+    $key = $db->encryptor('decrypt', $_POST['_key']);
+	$get_key = $db->Sanitize($key);
+	
+	$title = $db->Sanitize(trim($_POST['title']));
+	$version = $db->Sanitize(trim($_POST['version']));
+	$description = $db->Sanitize(trim($_POST['description']));
+	$desc_title = ran_code();
+	
+	define('resize_width', 300);
+    define('resize_height', 300);
+
+	$logopath = "../../../uploads/application/logo/";
+	$filepath = "../../../uploads/application/file/";
+	$descpath = "../../../uploads/application/description/";
+	
+	$logo_max_size = '5000000';
+	$app_max_size = '100000000';
+	
+	$logo_allowedExts = array("gif", "jpeg", "jpg", "png");
+	$app_allowedExts = array("apk");
+	
+	//Logo Variables
+	$image_name_ = $_FILES['images']['name'];
+	$image_name = str_replace(' ', '_', $image_name_);
+	$image_ext = strtolower(pathinfo($image_name, PATHINFO_EXTENSION));
+	$iname = time().'.'.$image_ext;
+    $image_size = $_FILES['images']['size'];
+    $image_tmp = $_FILES['images']['tmp_name'];
+    $uploadImageTo = $logopath.$iname;
+	
+	$image_data = getimagesize($image_tmp);
+    $image_width = $image_data[0];
+    $image_height = $image_data[1];
+	
+	//File Variables
+	$app_name_ = $_FILES['appfile']['name'];
+	$app_name = str_replace(' ', '_', $app_name_);
+	$app_ext = strtolower(pathinfo($app_name, PATHINFO_EXTENSION));
+    $app_size = $_FILES['appfile']['size'];
+    $app_tmp = $_FILES['appfile']['tmp_name'];
+    $uploadAppTo = $filepath.$app_name;
+	
+	if(is_dir($logopath) == false)
+    {
+        mkdir($logopath, 0777, true) or die('Error: ');
+    }
+        		
+    if(is_dir($filepath) == false)
+    {
+        mkdir($filepath, 0777, true) or die('Error: ');
+    }
+	
+    if(isset($_POST['submitted'])  == 'create_application'){
+        $valid = true;
+    	if(empty($title)){
+            $errormsg[] = '<li>Title is required.</li>';
+            $valid = false;
+        }
+        
+        if(empty($version)){
+            $errormsg[] = '<li>Version is required.</li>';
+            $valid = false;
+        }
+        
+        if(empty($description)){
+            $errormsg[] = '<li>Description is required.</li>';
+            $valid = false;
+        }
+        
+        if(empty( $_FILES['images'] )){
+            $errormsg[] = '<li>Logo is required.</li>';
+            $valid = false;
+        }
+        
+        if(empty( $_FILES['appfile'] )){
+            $errormsg[] = '<li>File is required.</li>';
+           $valid = false;
+        }
+        
+        if(strlen($title) < 3){
+            $errormsg[] = '<li>Title is too short.</li>';
+            $valid = false;
+        }
+    	
+    	$title_qry = $db->sql_query("SELECT app_title FROM applications WHERE app_title='$title'");
+    	$title_chk = $db->sql_numrows($title_qry);
+    	if($title_chk > 0){
+            $errormsg[] = '<li>App already added in database.</li>';
+            $valid = false;
+    	}
+    	
+    	if($image_size > $logo_max_size){
+    	    $errormsg[] = '<li>Logo exceeds max size .</li>';
+            $valid = false;
+    	}
+    	
+    	if($app_size > $app_max_size){
+    	    $errormsg[] = '<li>File exceeds max size .</li>';
+            $valid = false;
+    	}
+    	
+    	if( !in_array($image_ext, $logo_allowedExts)){
+    	    $errormsg[] = '<li>Invalid logo extension.</li>';
+            $valid = false;
+    	}
+    	
+    	if( !in_array($app_ext, $app_allowedExts)){
+    	    $errormsg[] = '<li>Invalid file extension.</li>';
+            $valid = false;
+    	}
+    	
+    	if($image_width != '300' && $image_height != '300'){
+    	    $errormsg[] = '<li>Invalid image resolution.</li>';
+            $valid = false;
+    	}
+    	
+        if($valid){
+            if($get_key == 'firenetdev')
+            {
+                
+                //Uploading File
+                if(isset($_FILES['appfile'])){
+                    $moveApp = move_uploaded_file($app_tmp,$uploadAppTo);
+                }
+                
+                if($moveApp){
+                    //Uploading Logo
+                    if(isset($_FILES['images'])){
+                        $moveImage = move_uploaded_file($image_tmp,$uploadImageTo);
+                    }
+                    
+                    if($moveImage){
+                        //Uploading Description
+                        $files = "../../../uploads/application/description/".$desc_title;
+                        $fh = fopen($files, "w");
+                        $fwrite = fwrite($fh, $description);
+                        $fclose = fclose($fh);
+                        
+                        if($fwrite && $fclose){
+                            $action = 'Uploaded application <code>'.$app_title.'</code>.';
+                            $addactivity = $db->sql_query("INSERT INTO activity_logs 
+                							(user_id, date, action, ipaddress, device_os, device_client) 
+                							values
+                							('$user_id_2', '".date('Y-m-d H:i:s')."', '$action', '".$_SERVER['REMOTE_ADDR']."','$deviceOS','$device_client')");
+                							
+                            $result = $db->sql_query("INSERT INTO applications 
+                        			 ( 
+                        			 app_title, 
+                        			 app_version, 
+                        			 logo, 
+                        			 app_description, 
+                        			 filename, 
+                        			 date_uploaded)
+                        		VALUES
+                        			 (
+                        			 '".$db->SanitizeForSQL($title)."',
+                        			 '".$db->SanitizeForSQL($version)."',
+                        			 '".$db->SanitizeForSQL($iname)."',
+                        			 '".$db->SanitizeForSQL($desc_title)."', 
+                        			 '".$db->SanitizeForSQL($app_name)."', 
+                        			 '".date('Y-m-d h:i:s')."'
+                        			 )");
+                                if($result && $addactivity){
+                                    $success_message = 'Application created successfully.';
+                                    $values['response'] = 1;
+                                    $values['msg'] = $success_message;
+                                }else{
+                                    $error_message = 'Failed creating application!';
+                                    $values['response'] = 2;
+                                    $values['msg'] = $error_message;
+                                }
+                        }else{
+                            $error_message = 'Failed creating description!';
+                            $values['response'] = 2;
+                            $values['msg'] = $error_message;
+                        }
+                        
+                    }else{
+                        $error_message = 'Failed uploading logo!';
+                        $values['response'] = 2;
+                        $values['msg'] = $error_message;
+                    }
+                    
+                }else{
+                    $error_message = 'Failed uploading application!';
+                    $values['response'] = 2;
+                    $values['msg'] = $error_message;
+                }
+                
+            }else{
+                $error_message = 'Site key invalid!';
+                $values['response'] = 2;
+                $values['msg'] = $error_message;
+            }
+        }else{
+            $values['response'] = 3;
+            $errors = implode('',$errormsg);
+            $values['errormsg'] = $errors;
+        }
+    }
+    echo json_encode($values);
+?>

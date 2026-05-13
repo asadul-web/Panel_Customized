@@ -1,0 +1,46 @@
+[
+    {
+        "key": "LIC-3097CFB8-4513A49C",
+        "status": "active",
+        "created_at": 1766592563,
+        "expires_at": 1800720563,
+        "duration_days": 365,
+        "domain": "",
+        "notes": "",
+        "created_by": "developer",
+        "renewed_at": 1766592575,
+        "renewed_by": "developer"
+    },
+    {
+        "key": "AZIM-0A1B115F-1C665A9F",
+        "status": "active",
+        "created_at": 1766603383,
+        "expires_at": 1829675383,
+        "duration_days": 365,
+        "domain": "localhost",
+        "notes": "",
+        "created_by": "developer",
+        "renewed_at": 1767128667,
+        "renewed_by": "developer"
+    },
+    {
+        "key": "ADMIN-9194D344-28CAF5F7",
+        "status": "active",
+        "created_at": 1766603453,
+        "expires_at": 1798139453,
+        "duration_days": 365,
+        "domain": "ruzain.com",
+        "notes": "",
+        "created_by": "developer"
+    },
+    {
+        "key": "DEV-6575866B-0499A2DD",
+        "status": "active",
+        "created_at": 1767128563,
+        "expires_at": 1798664563,
+        "duration_days": 365,
+        "domain": "",
+        "notes": "",
+        "created_by": "developer"
+    }
+]

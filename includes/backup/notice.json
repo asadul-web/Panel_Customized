@@ -1,0 +1,18 @@
+{
+    "title": "Panel News Update",
+    "message": "<p class=\"isSelectedEnd\">⚙️ Improved performance and faster response | 👥 Enhanced user management system | 📊 Better monitoring and activity tracking | 🌐 More stable connectivity handling | 🔒 Advanced security and panel protection added | ⚡ Bug fixes and overall stability improvements</p><p>🙏 Thank you for your continued support!</p>",
+    "active": true,
+    "severity": "info",
+    "billing": {
+        "cycle_day": 1,
+        "due_date": "2025-11-30T06:00:00.000Z",
+        "grace_days": 3,
+        "auto_down": true,
+        "status": "down",
+        "panel_down": true,
+        "next_due": "2025-11-30T06:00:00+0000",
+        "days_remaining": -118
+    },
+    "updated_at": 1774712928,
+    "updated_by": "developer"
+}

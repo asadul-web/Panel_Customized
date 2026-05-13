@@ -1,0 +1,45 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+RewriteRule .? - [E=Authorization:%{HTTP:Authorization}]
+RewriteRule .? - [E=Host:%{HTTP:Host}]
+
+# Security Headers - Enhanced Protection
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options SAMEORIGIN
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "no-referrer"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    Header always set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet, noimageindex, nocache"
+    Header always set Cache-Control "no-store, no-cache, must-revalidate, private"
+    Header always set Pragma "no-cache"
+</IfModule>
+
+# Allow API endpoints
+RewriteCond %{REQUEST_URI} ^/api/.*\.php$ [NC]
+RewriteRule ^ - [L]
+
+# Allow Script directory
+RewriteCond %{REQUEST_URI} ^/Script/.*\.php$ [NC]
+RewriteRule ^ - [L]
+
+# Main rewrite rules
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/.]+)(/?)$ index.php?p=$1 [L,QSA]
+
+# Protect sensitive files
+<FilesMatch "^(config\.php|\.htaccess|\.htpasswd)">
+    Require all denied
+</FilesMatch>
+
+# Prevent directory listing
+Options -Indexes
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php81” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php81 .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

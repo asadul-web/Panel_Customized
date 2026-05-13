@@ -1,0 +1,28 @@
+[29-Mar-2026 11:27:01 Asia/Riyadh] Git Username: vollams
+[29-Mar-2026 11:27:01 Asia/Riyadh] Git Token: SET (length: 40)
+[29-Mar-2026 11:27:01 Asia/Riyadh] DB Config: IP=64.20.45.186, User=root, Name=panels
+[29-Mar-2026 11:27:01 Asia/Riyadh] Downloading script from: https://raw.githubusercontent.com/vollams/server_script/main/debian_ovpn
+[29-Mar-2026 11:27:04 Asia/Riyadh] GitHub download HTTP code: 200
+[29-Mar-2026 11:27:04 Asia/Riyadh] Downloaded data length: 28716
+[29-Mar-2026 11:27:04 Asia/Riyadh] Script downloaded successfully
+[29-Mar-2026 11:27:04 Asia/Riyadh] Attempting to push to GitHub...
+[29-Mar-2026 11:27:04 Asia/Riyadh] Username: vollams
+[29-Mar-2026 11:27:04 Asia/Riyadh] Site URL: vollams/server_script
+[29-Mar-2026 11:27:04 Asia/Riyadh] Repo: vollams/vollams/server_script
+[29-Mar-2026 11:27:04 Asia/Riyadh] Branch: server_script
+[29-Mar-2026 11:27:04 Asia/Riyadh] File: debian_ovpn
+[29-Mar-2026 11:27:04 Asia/Riyadh] Script size: 28999 bytes
+[29-Mar-2026 11:27:06 Asia/Riyadh] PHP Notice:  Undefined index: commit in D:\php installed\php 7.4\htdocs\includes\functions.php on line 771
+[29-Mar-2026 11:27:06 Asia/Riyadh] PHP Notice:  Trying to access array offset on value of type null in D:\php installed\php 7.4\htdocs\includes\functions.php on line 771
+[29-Mar-2026 11:27:06 Asia/Riyadh] PHP Notice:  Trying to access array offset on value of type null in D:\php installed\php 7.4\htdocs\includes\functions.php on line 771
+[29-Mar-2026 11:27:06 Asia/Riyadh] PHP Notice:  Trying to access array offset on value of type null in D:\php installed\php 7.4\htdocs\includes\functions.php on line 771
+[29-Mar-2026 11:27:06 Asia/Riyadh] PHP Notice:  Trying to access array offset on value of type null in D:\php installed\php 7.4\htdocs\includes\functions.php on line 781
+[29-Mar-2026 11:27:06 Asia/Riyadh] PHP Warning:  Invalid argument supplied for foreach() in D:\php installed\php 7.4\htdocs\includes\functions.php on line 781
+[29-Mar-2026 11:27:08 Asia/Riyadh] Push result: SUCCESS
+[29-Mar-2026 11:27:08 Asia/Riyadh] Successfully pushed to GitHub: https://github.com/vollams/vollams/server_script/blob/server_script/debian_ovpn
+[29-Mar-2026 11:27:08 Asia/Riyadh] Slow request: /api/push.php?tcp=443&udp=7300&ssl=444&vless=&obfs=salamander&authstr=&hysteria=&subdomain=&nsdomain=&service=debian_ovpn&ip=1.2.3.4 - Time: 6474.18ms, Memory: 1.18 MB
+[29-Mar-2026 11:27:08 Asia/Riyadh] Slow request: /test_server_add.php - Time: 6570.61ms, Memory: 1.1 MB
+[29-Mar-2026 11:56:44 Asia/Riyadh] Slow request: /developer-settings - Time: 1484.47ms, Memory: 3.01 MB
+[29-Mar-2026 12:03:25 Asia/Riyadh] PHP Notice:  Undefined index: user_requests_active in D:\php installed\php 7.4\htdocs\templates_c\5662241fdf13bd1338de3a4930d0fb806630f805_0.file.sidenav.tpl.php on line 116
+[29-Mar-2026 12:03:25 Asia/Riyadh] PHP Notice:  Trying to get property 'value' of non-object in D:\php installed\php 7.4\htdocs\templates_c\5662241fdf13bd1338de3a4930d0fb806630f805_0.file.sidenav.tpl.php on line 116
+[29-Mar-2026 12:03:31 Asia/Riyadh] Slow request: /serverside/data/get_version.php?_=1774775005699 - Time: 5053.62ms, Memory: 1.13 MB
