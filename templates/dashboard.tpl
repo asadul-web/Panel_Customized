@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
@@ -161,7 +161,7 @@
 {/if}
 {if $user_level_2=='reseller' }
 
-<div class="hero text-white hero-bg-image hero-bg-parallax" style="background-image: url('dist/img/bg.jpg');">
+<div class="hero">
 <div class="hero-inner">
 <h2>Welcome, {$user_name_2}!</h2>
 <p class="lead">Thank you for choosing {$site_name} as your vpn service provider. We will keep you up to date.</p>
@@ -170,7 +170,6 @@
 </div>
 </div>
 </div>
-<br>
 {/if}
 
 <div class="row">
