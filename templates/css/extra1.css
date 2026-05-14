@@ -1,1 +1,78 @@
-<style>#loading{padding-top:150px;width:100%;height:100%;top:0;left:0;position:fixed;display:block;opacity:1;background-color:#fff;z-index:99;text-align:center}#loading-image{position:absolute;top:500px;left:240px;z-index:100}table{margin: 0 auto;width: 100%;clear: both;border-collapse: collapse;table-layout: fixed}.fn-color{font-family: 'Roboto', sans-serif;color:#ffff;background-image:-webkit-linear-gradient(92deg,#f35626,#feab3a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;-webkit-animation:hue 5s infinite linear}@-webkit-keyframes hue{from{-webkit-filter:hue-rotate(0)}to{-webkit-filter:hue-rotate(-360deg)}}</style>
+<style>
+/* =========================================================
+   LOGIN PAGE
+========================================================= */
+
+.login-box,
+.login-card,
+.auth-box{
+    background:rgba(24,35,56,0.95) !important;
+    border-radius:28px !important;
+    padding:30px !important;
+    box-shadow:0 20px 60px rgba(0,0,0,0.45) !important;
+    border:1px solid rgba(255,255,255,0.08) !important;
+}
+
+/* =========================================================
+   BADGES
+========================================================= */
+
+.badge,
+.label{
+    border-radius:999px !important;
+    padding:8px 12px !important;
+    font-weight:600 !important;
+}
+
+/* =========================================================
+   DROPDOWN
+========================================================= */
+
+.dropdown-menu{
+    background:#182338 !important;
+    border-radius:18px !important;
+    border:1px solid rgba(255,255,255,0.08) !important;
+    overflow:hidden;
+}
+
+.dropdown-item{
+    color:#e2e8f0 !important;
+    padding:12px 16px !important;
+}
+
+.dropdown-item:hover{
+    background:#22314f !important;
+}
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+#loading{
+    background:#0b1020 !important;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:768px){
+
+    .card,
+    .box,
+    .panel{
+        border-radius:16px !important;
+    }
+
+    .sidebar-menu li a,
+    .sidebar a{
+        margin:4px 8px !important;
+    }
+
+    .btn,
+    button{
+        width:100%;
+    }
+}
+
+</style>
