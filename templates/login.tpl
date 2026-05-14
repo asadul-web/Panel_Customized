@@ -16,78 +16,284 @@
 {include file='css/custom_css.tpl'}
 
 <style>
-/* Reseller Card Theme Integration */
-.reseller-card.alert-primary {
-    background: var(--primary, #6777ef) !important;
-    background: linear-gradient(135deg, var(--primary, #6777ef), rgba(103, 119, 239, 0.8)) !important;
-    border-color: var(--primary, #6777ef) !important;
+:root {
+    --login-bg: #04060e;
+    --login-bg-soft: rgba(15, 23, 42, 0.85);
+    --login-card: rgba(10, 18, 35, 0.95);
+    --login-border: rgba(255, 255, 255, 0.08);
+    --login-border-strong: rgba(99, 102, 241, 0.25);
+    --login-text: #e2e8f0;
+    --login-muted: #94a3b8;
+    --login-accent: #7c3aed;
+    --login-accent-soft: #4f46e5;
+}
+html, body {
+    min-height: 100% !important;
+    background: radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.18), transparent 28%) !important;
+    background-image: radial-gradient(circle at 80% 10%, rgba(16, 185, 129, 0.14), transparent 22%), radial-gradient(circle at 10% 90%, rgba(59, 130, 246, 0.12), transparent 18%), linear-gradient(180deg, #04060e 0%, #070c16 56%, #0d1629 100%) !important;
+    color: var(--login-text) !important;
+}
+body.login-body {
+    overflow-x: hidden !important;
+}
+.login-page {
+    min-height: calc(100vh - 140px) !important;
+    display: grid !important;
+    align-items: center !important;
+    padding: 3rem 0 !important;
+}
+.login-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 0.95fr !important;
+    gap: 2rem !important;
+}
+.login-brand {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.85rem !important;
+    margin-bottom: 1.75rem !important;
+}
+.login-brand img {
+    border-radius: 50% !important;
+    box-shadow: 0 18px 45px rgba(124, 58, 237, 0.18) !important;
+}
+.login-brand__title {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.24em !important;
+    color: #c7d2fe !important;
+}
+.login-hero {
+    background: rgba(15, 23, 42, 0.74) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3) !important;
+    border-radius: 30px !important;
+    padding: 2.5rem 2.5rem 2.5rem 2.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    min-height: 100% !important;
+}
+.login-hero h1 {
+    font-size: 2.8rem !important;
+    line-height: 1.02 !important;
+    margin-bottom: 1rem !important;
     color: white !important;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(103, 119, 239, 0.3);
-    transition: all 0.3s ease;
 }
-
-.reseller-card.alert-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(103, 119, 239, 0.4);
+.login-hero p {
+    font-size: 1rem !important;
+    color: var(--login-muted) !important;
+    max-width: 34rem !important;
+    margin-bottom: 1.75rem !important;
 }
-
-.reseller-card .alert-heading {
+.login-hero .login-highlights {
+    display: grid !important;
+    gap: 1rem !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+.login-hero .highlight {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 20px !important;
+    padding: 1rem 1.15rem !important;
+    color: var(--login-text) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    font-weight: 500 !important;
+}
+.login-hero .highlight i {
+    width: 2.4rem !important;
+    height: 2.4rem !important;
+    display: grid !important;
+    place-items: center !important;
+    border-radius: 14px !important;
+    background: rgba(124, 58, 237, 0.16) !important;
+    color: #dbeafe !important;
+}
+.login-frame {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+.login-card {
+    background: var(--login-card) !important;
+    border: 1px solid var(--login-border) !important;
+    border-radius: 30px !important;
+    box-shadow: 0 40px 90px rgba(3, 7, 24, 0.45) !important;
+    overflow: hidden !important;
+}
+.login-card .card-body {
+    padding: 2.7rem !important;
+}
+.login-card-header {
+    font-size: 1.65rem !important;
+    font-weight: 700 !important;
     color: white !important;
-    font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 0.65rem !important;
 }
-
-.reseller-card p {
-    color: rgba(255, 255, 255, 0.9) !important;
-    margin-bottom: 15px;
+.login-card-description {
+    color: var(--login-muted) !important;
+    margin-bottom: 1.75rem !important;
+    line-height: 1.8 !important;
 }
-
-.reseller-card .btn-light {
-    background: #28a745 !important;
-    background: linear-gradient(135deg, #28a745, #20c997) !important;
-    color: white !important;
-    border: none !important;
+.form-group label {
+    color: #cbd5e1 !important;
     font-weight: 600 !important;
-    padding: 8px 20px !important;
-    border-radius: 6px !important;
-    transition: all 0.3s ease !important;
-    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+    margin-bottom: 0.55rem !important;
 }
-
-.reseller-card .btn-light:hover {
-    background: #218838 !important;
-    background: linear-gradient(135deg, #218838, #17a2b8) !important;
+.form-control {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #f8fafc !important;
+    border-radius: 16px !important;
+    height: 58px !important;
+    transition: all 0.3s ease !important;
+}
+.form-control:focus {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(124, 58, 237, 0.55) !important;
+    box-shadow: 0 0 0 0.2rem rgba(124, 58, 237, 0.18) !important;
     color: white !important;
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+}
+.input-group-text {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #a5b4fc !important;
+    border-radius: 0 16px 16px 0 !important;
+}
+.btn-submit {
+    border-radius: 16px !important;
+    background: linear-gradient(135deg, var(--login-accent), var(--login-accent-soft)) !important;
+    border: none !important;
+    color: white !important;
+    padding: 0.95rem 1.15rem !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    box-shadow: 0 18px 45px rgba(124, 58, 237, 0.25) !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+.btn-submit:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 24px 58px rgba(124, 58, 237, 0.28) !important;
+}
+.btn-progress::after {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    border-radius: 16px !important;
+    background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.12), rgba(255,255,255,0.05)) !important;
+    animation: login-button-loading 1.1s infinite linear !important;
+}
+@keyframes login-button-loading {
+    0% { transform: translateX(-100%) !important; }
+    100% { transform: translateX(100%) !important; }
+}
+.login-links {
+    display: grid !important;
+    gap: 0.9rem !important;
+    margin-top: 1.4rem !important;
+}
+.login-links a {
+    color: #f8fafc !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 16px !important;
+    padding: 0.95rem 1.25rem !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    font-weight: 600 !important;
+    transition: all 0.25s ease !important;
+}
+.login-links a:hover {
+    transform: translateY(-1px) !important;
+    background: rgba(124, 58, 237, 0.16) !important;
+    border-color: rgba(124, 58, 237, 0.22) !important;
+}
+.reseller-card {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.18), rgba(59, 130, 246, 0.12)) !important;
+    border: 1px solid rgba(124, 58, 237, 0.24) !important;
+    border-radius: 22px !important;
+    padding: 1.35rem 1.35rem !important;
+    box-shadow: 0 28px 65px rgba(4, 6, 14, 0.28) !important;
+}
+.reseller-card .alert-heading {
+    color: #eef2ff !important;
+    font-weight: 700 !important;
+    margin-bottom: 0.85rem !important;
+}
+.reseller-card p {
+    color: #dbeafe !important;
+    margin-bottom: 1rem !important;
+    line-height: 1.7 !important;
+}
+.reseller-card .btn-light {
+    background: linear-gradient(135deg, var(--login-accent), #5b21b6) !important;
+    border: none !important;
+    border-radius: 14px !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 0.8rem 1.2rem !important;
+    box-shadow: 0 16px 35px rgba(124, 58, 237, 0.2) !important;
+}
+.reseller-card .btn-light:hover {
+    transform: translateY(-1px) !important;
+}
+.footer .simple-footer {
+    color: var(--login-muted) !important;
+    padding: 1.25rem 0 1rem !important;
+    text-align: center !important;
+}
+.footer .text-muted a {
+    color: var(--login-accent) !important;
+}
+@media (max-width: 992px) {
+    .login-grid { grid-template-columns: 1fr !important; }
+    .login-hero { min-height: auto !important; }
+}
+@media (max-width: 576px) {
+    .login-page { padding: 2rem 0 1rem !important; }
+    .login-card .card-body { padding: 2rem 1.5rem !important; }
+    .login-hero { padding: 1.8rem 1.5rem !important; border-radius: 24px !important; }
+    .login-hero h1 { font-size: 2.2rem !important; }
 }
 </style>
 
 </head>
-<body class="bg-image">
+<body class="login-body">
 <a class="faz" href="#" onclick="return false;" type="button" data-theme-toggle><i id="xtoggle"></i></a>
 <div id="app">
-<section class="section">
-<div class="container mt-5">
-<div class="row">
-<div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
-<div class="login-brand">
-<img src="{$site_logo}" alt="logo" width="120" height="120">
+<section class="section login-page">
+<div class="container">
+<div class="login-grid">
+<div class="login-hero">
+    <div class="login-brand">
+        <img src="{$site_logo}" alt="logo">
+        <div class="login-brand__title">{$site_name}</div>
+    </div>
+    <h1>Secure VPN dashboard access</h1>
+    <p>Login to the panel securely and manage servers, users, and connection analytics from one premium console.</p>
+    <div class="login-highlights">
+        <div class="highlight"><i class="fas fa-shield-alt"></i>Enterprise-grade security</div>
+        <div class="highlight"><i class="fas fa-server"></i>Server & user controls</div>
+        <div class="highlight"><i class="fas fa-rocket"></i>Fast, modern workflow</div>
+        <div class="highlight"><i class="fas fa-chart-line"></i>Realtime activity insights</div>
+    </div>
 </div>
-{$mainte}
-
-<div class="card card-primary">
+<div class="login-frame">
+<div class="login-card card">
 <div class="card-body">
-
-    {* FIXED: render HTML in login note *}
+    <div class="login-card-header">Welcome back</div>
+    <p class="login-card-description">Use your existing VPN login credentials to continue. The form below submits normally to the panel authentication endpoint.</p>
+    {$mainte}
     <div class="mb-3 text-center">
         {$login_note nofilter}
     </div>
-
     <form method="post" class="authenticate" autocomplete="off">
         <div class="errors"></div>
-    
         <input type="hidden" id="submitted" name="submitted" value="login_account" />
         <input type="hidden" id="code" name="code" value="{$code}" />
         <input type="hidden" id="category" name="category" value="{$login_encrypt}" />
@@ -98,9 +304,8 @@
         </div>
         <div class="form-group">
             <label for="user_pass">Password</label>
-            
             <div class="input-group colorpickerinput">
-            <input type="password" class="form-control" name="user_pass" id="user_pass" tabindex="1" autofocus>
+                <input type="password" class="form-control" name="user_pass" id="user_pass" tabindex="1" autofocus>
                 <div class="input-group-append">
                     <div class="input-group-text text-primary" style="cursor: pointer;">
                         <span class="password-toggle-icon"><i class="fas fa-eye"></i></span>
@@ -111,25 +316,20 @@
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-lg btn-block btn-submit" tabindex="4">Login</button>
         </div>
-        <hr>
-        <div class="form-group text-center">
-            <a href="download" class="btn btn-icon icon-left"><i class="fas fa-download"></i> Application List</a>
+        <div class="login-links">
+            <a href="download" class="btn btn-icon icon-left"><i class="fas fa-download"></i>Application List</a>
+            <a href="update" class="btn btn-icon icon-left btn-primary"><i class="fas fa-edit"></i>Update Information</a>
         </div>
-        <div class="form-group text-center">
-            <a href="update" class="btn btn-icon icon-left btn-primary"><i class="fas fa-edit"></i> Update Information</a>
-        </div>
-        <hr>
-        <div class="form-group text-center">
+        <div class="form-group mt-4 text-center">
             <div class="alert alert-primary reseller-card" role="alert">
-                <h6 class="alert-heading"><i class="fas fa-handshake"></i> Become a Reseller</h6>
+                <h6 class="alert-heading"><i class="fas fa-handshake"></i>Become a Reseller</h6>
                 <p class="mb-2">Join our reseller program and start earning by selling VPN accounts to your customers.</p>
                 <a href="reseller-signup" class="btn btn-light btn-sm">
-                    <i class="fas fa-user-plus"></i> Apply Now
+                    <i class="fas fa-user-plus"></i>Apply Now
                 </a>
             </div>
         </div>
     </form>
-
 </div>
 </div>
 </div>
