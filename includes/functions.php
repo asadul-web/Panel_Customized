@@ -174,7 +174,7 @@ if ($site_row === null || $site_row === false) {
 }
 $site_image = 'uploads/images/'.($site_row['logo'] ?? '');
 $site_name = $site_row['name'] ?? 'VPN Panel';
-$site_theme = $site_row['theme'] ?? 'default';
+$site_theme = $site_row['theme'] ?? 'dark';
 $site_update = $site_row['update_json'] ?? '';
 $site_license = $site_row['license'] ?? '';
 $site_logo_status = $site_row['logo_status'] ?? 0;
