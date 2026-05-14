@@ -1,10 +1,10 @@
 <?php
 date_default_timezone_set('Asia/Riyadh');
-$DB_ip = "64.20.45.186";
+$DB_ip = "68.168.220.235";
 $DB_host = "localhost";
-$DB_user = "root";
-$DB_pass = "";
-$DB_name = "panels";
+$DB_user = "asalosit_vpnpanelnew";
+$DB_pass = "asalosit_vpnpanelnew";
+$DB_name = "asalosit_vpnpanelnew";
 
 // Optimize MySQL connection with performance settings
 $mysqli = new MySQLi($DB_host,$DB_user,$DB_pass,$DB_name);
